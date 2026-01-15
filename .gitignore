@@ -46,4 +46,3 @@ application-local.properties
 # OS specific
 .DS_Store
 Thumbs.db
-/.metadata/
