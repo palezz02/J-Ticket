@@ -1,8 +1,8 @@
 package com.dev.j_ticket.domain.models;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -13,44 +13,34 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Version;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "events")
-@Getter 
-@Setter 
+@Table(name = "users")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Event {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String title;
+    @Column(nullable = false, unique = true)
+    private String username;
 
-    private String description;
-
-    @Column(nullable = false)
-    private String location = "Milano";
+    @Column(nullable = false, unique = true)
+    private String email;
 
     @Column(nullable = false)
-    private LocalDateTime eventDate;
+    private String password;
 
-    @Column(nullable = false)
-    private Integer availableTickets;
-
-    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-    @JsonIgnoreProperties("event")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("user")
     private List<Ticket> tickets;
-    
-    @Version // Gestisce la concorrenza (Optimistic Locking)
-    private Integer version;
-
 }
