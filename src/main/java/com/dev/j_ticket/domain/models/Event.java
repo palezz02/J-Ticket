@@ -1,12 +1,17 @@
 package com.dev.j_ticket.domain.models;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Version;
 import lombok.AllArgsConstructor;
@@ -20,6 +25,7 @@ import lombok.Setter;
 @Setter 
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Event {
 
     @Id
@@ -40,6 +46,10 @@ public class Event {
     @Column(nullable = false)
     private Integer availableTickets;
 
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("event")
+    private List<Ticket> tickets;
+    
     @Version // Gestisce la concorrenza (Optimistic Locking)
     private Integer version;
 
