@@ -1,5 +1,7 @@
 package com.dev.j_ticket.domain.models;
 
+import java.math.BigDecimal;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
@@ -29,7 +31,7 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Double price;
+    private BigDecimal price;
 
     @Column(name = "serial_number", unique = true)
     private String serialNumber;
