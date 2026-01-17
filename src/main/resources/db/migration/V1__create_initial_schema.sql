@@ -1,5 +1,10 @@
-DROP TABLE IF EXISTS events CASCADE;
+/*
+ * DATABASE MIGRATION: V1
+ * SCOPE: Initial Schema for J-Ticket
+ * AUTHOR: palezz02
+ */
 
+-- Events Table
 CREATE TABLE IF NOT EXISTS events (
     id BIGSERIAL PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
@@ -10,6 +15,7 @@ CREATE TABLE IF NOT EXISTS events (
     version INT DEFAULT 0
 );
 
+-- Users Table
 CREATE TABLE IF NOT EXISTS users (
     id BIGSERIAL PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
@@ -17,6 +23,7 @@ CREATE TABLE IF NOT EXISTS users (
     password VARCHAR(255) NOT NULL
 );
 
+-- Tickets Table
 CREATE TABLE IF NOT EXISTS tickets (
     id BIGSERIAL PRIMARY KEY,
     price DECIMAL(10,2) NOT NULL,
@@ -27,16 +34,15 @@ CREATE TABLE IF NOT EXISTS tickets (
     CONSTRAINT fk_event FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE
 );
 
-
--- Inserimento Eventi
+-- Pilot Event
 INSERT INTO events (title, description, location, event_date, available_tickets, version)
 VALUES ('Grand Opening Green Day', 'Evento inaugurale a Firenze', 'Visarno Arena', '2026-06-01 21:00:00', 500, 0);
 
--- Inserimento Utenti
+-- Test User
 INSERT INTO users (id, username, email, password) 
 VALUES (1, 'mario_rossi', 'mario@email.it', 'password123');
 
--- Inserimento Ticket (Collega utente 1 con l'evento dei Green Day)
+-- Sample Ticket
 INSERT INTO tickets (price, serial_number, user_id, event_id)
 VALUES (75.50, 'TKT-GD-2026-001', 1, (SELECT id FROM events WHERE title = 'Grand Opening Green Day' LIMIT 1));
 
