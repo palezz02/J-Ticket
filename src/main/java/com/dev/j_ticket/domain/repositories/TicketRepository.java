@@ -16,7 +16,7 @@ public interface TicketRepository {
 	/**
      * Retrieves all issued tickets in the system.
      * Primarily used for administrative auditing and global sales reporting.
-     * * @return a {@link List} of all {@link Ticket} entities.
+     * @return a {@link List} of all {@link Ticket} entities.
      */
 	List<Ticket> findAll();
 	

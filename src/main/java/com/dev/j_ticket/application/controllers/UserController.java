@@ -24,7 +24,7 @@ public class UserController {
 
 	/**
      * Constructs the controller with the required UserService.
-     * @param UserService the service layer component responsible for user business logic.
+     * @param userService the service layer component responsible for user business logic.
      */
     public UserController(UserService userService) {
 		this.userService = userService;

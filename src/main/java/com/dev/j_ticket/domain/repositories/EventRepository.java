@@ -16,7 +16,7 @@ public interface EventRepository {
 	/**
      * Retrieves all events managed by the system.
      * Useful for main dashboard and event listing.
-     * * @return a {@link List} of all available {@link Event} entities.
+     * @return a {@link List} of all available {@link Event} entities.
      */
 	List<Event> findAll();
 	

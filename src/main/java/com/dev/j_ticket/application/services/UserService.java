@@ -23,7 +23,7 @@ public class UserService {
 
 	/**
      * Constructs the service with its required repository port.
-     * @param UserRepository the domain repository interface for user data access.
+     * @param userRepository the domain repository interface for user data access.
      */
     public UserService(UserRepository userRepository) {
 		this.userRepository = userRepository;

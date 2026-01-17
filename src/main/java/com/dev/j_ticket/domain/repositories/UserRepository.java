@@ -17,7 +17,7 @@ public interface UserRepository{
 	/**
      * Retrieves all users in the system.
      * Primarily used for administrative purposes and user management dashboards.
-     * * @return a {@link List} of all available {@link User} entities.
+     * @return a {@link List} of all available {@link User} entities.
      */
 	List<User> findAll();
 	
