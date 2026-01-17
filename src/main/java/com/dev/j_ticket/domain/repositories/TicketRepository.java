@@ -16,7 +16,7 @@ public interface TicketRepository {
 	/**
      * Retrieves all issued tickets in the system.
      * Primarily used for administrative auditing and global sales reporting.
-     * * @return a List of all Ticket entities.
+     * * @return a {@link List} of all {@link Ticket} entities.
      */
 	List<Ticket> findAll();
 	
@@ -25,7 +25,7 @@ public interface TicketRepository {
      * This method ensures that the ticketis officially
      * registered and linked to a user and an event.
      * @param ticket, the Ticket entity to be saved.
-     * @return the persisted Event with its assigned database ID.
+     * @return the persisted {@link EvenTicket} with its assigned database ID.
      */
 	Ticket save(Ticket ticket);
 	
@@ -34,7 +34,7 @@ public interface TicketRepository {
      * Used for validation during entry checks at the venue or for 
      * retrieving details for a specific customer request.
      * @param id, the unique ID of the ticket.
-     * @return an Optional, containing the ticket if found, or empty otherwise.
+     * @return an {@link Optional}, containing the ticket if found, or empty otherwise.
      */
     Optional<Ticket> findById(Long id);
 }

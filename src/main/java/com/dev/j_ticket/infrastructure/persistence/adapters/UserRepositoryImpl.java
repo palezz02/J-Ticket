@@ -28,6 +28,7 @@ public class UserRepositoryImpl implements UserRepository{
 	/**
      * Delegates the lookup of an user by email to the JPA repository.
      * @param email, the unique database identifier for user.
+     * @return an {@link Optional}, containing the found user, or empty if no user exists with the given email.
      */
 	@Override
 	public Optional<User> findByEmail(String email) {
@@ -37,7 +38,7 @@ public class UserRepositoryImpl implements UserRepository{
 
     /**
      * Fetches all users by delegating the call to the JPA repository.
-     * @return a list of all users entities found in the database.
+     * @return a {@link List} of all {@link User} entities found in the database.
      */
 	@Override
 	public List<User> findAll() {
@@ -47,7 +48,7 @@ public class UserRepositoryImpl implements UserRepository{
 	/**
      * Executes the persistence of a user to the PostgreSQL database.
      * @param the user to persist.
-     * @return the saved user including the generated database primary key.
+     * @return the saved {@link User} including the generated database primary key.
      */
 	@Override
 	public User save(User user) {

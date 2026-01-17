@@ -17,7 +17,7 @@ public interface UserRepository{
 	/**
      * Retrieves all users in the system.
      * Primarily used for administrative purposes and user management dashboards.
-     * * @return a List of all available User entities.
+     * * @return a {@link List} of all available {@link User} entities.
      */
 	List<User> findAll();
 	
@@ -26,7 +26,7 @@ public interface UserRepository{
      * Handles the storage of sensitive data, including encrypted credentials.
      * This method is central to the user registration and profile update flow
      * @param user, the User entity to be saved.
-     * @return the persisted User with its assigned database ID.
+     * @return the persisted {@link User} with its assigned database ID.
      */
 	User save(User user);
 	
@@ -34,7 +34,7 @@ public interface UserRepository{
      * Finds a specific user by its unique email address.
      * Critical for the Authentication Provider and Security Filter Chain.
      * @param email, the unique email of the user.
-     * @return an Optional, containing the user if found, or empty otherwise.
+     * @return an {@link Optional}, containing the user if found, or empty otherwise.
      */
     Optional<User> findByEmail(String email);
 }

@@ -26,7 +26,7 @@ public class EventRepositoryImpl implements EventRepository {
 
     /**
      * Fetches all events by delegating the call to the JPA repository.
-     * @return a list of all event entities found in the database.
+     * @return a {@link List} of all {@link Event} entities found in the database.
      */
 	@Override
 	public List<Event> findAll() {
@@ -34,9 +34,9 @@ public class EventRepositoryImpl implements EventRepository {
 	}
 
 	/**
-     * Persists an event to the PostgreSQL database.
+     * Executes the persistence of an event to the PostgreSQL database.
      * @param the event to persist.
-     * @return the saved event including the generated database primary key.
+     * @return the saved {@link Event} including the generated database primary key.
      */
 	@Override
 	public Event save(Event event) {

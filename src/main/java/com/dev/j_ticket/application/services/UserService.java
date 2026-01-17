@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.dev.j_ticket.domain.models.Ticket;
 import com.dev.j_ticket.domain.models.User;
 import com.dev.j_ticket.domain.repositories.UserRepository;
 
@@ -28,7 +29,7 @@ public class UserService {
      * Retrieves the complete catalog of users available in the system.
      * This method serves as the primary data provider for 
      * the administrative dashboard.
-     * @return a List of all User entities.
+     * @return a {@link List} of all {@link User} entities.
      */
 	public List<User> getAllUsers() {
         return userRepository.findAll();
@@ -37,7 +38,7 @@ public class UserService {
 	/**
      * Finds a specific user by their unique email address.
      * @param email the unique email address to search for.
-     * @return an Optional, containing the found user, or empty if no match exists.
+     * @return an {@link Optional}, containing the found user, or empty if no match exists.
      */
     public Optional<User> getByEmail(String email) {
         return userRepository.findByEmail(email);

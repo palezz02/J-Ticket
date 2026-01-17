@@ -27,7 +27,7 @@ public class TicketRepositoryImpl implements TicketRepository{
 
     /**
      * Fetches all tickets by delegating the call to the JPA repository.
-     * @return a list of all tickets entities found in the database.
+     * @return a {@link List} of all {@link Ticket} entities found in the database.
      */
 	@Override
     public List<Ticket> findAll() {
@@ -37,6 +37,7 @@ public class TicketRepositoryImpl implements TicketRepository{
 	/**
      * Delegates the lookup of a ticket by ID to the JPA repository.
      * @param id, the internal database identifier.
+     * @return an {@link Optional}, containing the found ticket, or empty if no ticket exists with the given ID.
      */
     @Override
     public Optional<Ticket> findById(Long id) {
@@ -46,7 +47,7 @@ public class TicketRepositoryImpl implements TicketRepository{
 	/**
      * Executes the persistence of a ticket to the PostgreSQL database.
      * @param the ticket to persist.
-     * @return the saved ticket including the generated database primary key.
+     * @return the saved {@link Ticket} including the generated database primary key.
      */
     @Override
     public Ticket save(Ticket ticket) {
