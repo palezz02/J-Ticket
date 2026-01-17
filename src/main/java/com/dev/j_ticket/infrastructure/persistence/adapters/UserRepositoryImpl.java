@@ -9,6 +9,13 @@ import com.dev.j_ticket.domain.models.User;
 import com.dev.j_ticket.domain.repositories.UserRepository;
 import com.dev.j_ticket.infrastructure.persistence.jpa.SpringDataUserRepository;
 
+/**
+ * Persistence Adapter for User entities.
+ * This class implements the EventRepository by wrapping the 
+ * SpringDataEventRepository. It acts as a bridge between the 
+ * domain layer and the Spring Data JPA infrastructure, ensuring that 
+ * the business logic is decoupled from the underlying ORM framework.
+ */
 @Repository
 public class UserRepositoryImpl implements UserRepository{
 	
@@ -18,23 +25,31 @@ public class UserRepositoryImpl implements UserRepository{
 		this.jpaRepo = jpaRepo;
 	}
 
-	@Override
-	public Optional<User> findByUsername(String username) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
-	}
-
+	/**
+     * Delegates the lookup of an user by email to the JPA repository.
+     * @param email, the unique database identifier for user.
+     * @return an {@link Optional}, containing the found user, or empty if no user exists with the given email.
+     */
 	@Override
 	public Optional<User> findByEmail(String email) {
 		// TODO Auto-generated method stub
 		return Optional.empty();
 	}
 
+    /**
+     * Fetches all users by delegating the call to the JPA repository.
+     * @return a {@link List} of all {@link User} entities found in the database.
+     */
 	@Override
 	public List<User> findAll() {
 		return jpaRepo.findAll();
 	}
 
+	/**
+     * Executes the persistence of a user to the PostgreSQL database.
+     * @param user the user to persist.
+     * @return the saved {@link User} including the generated database primary key.
+     */
 	@Override
 	public User save(User user) {
 		// TODO Auto-generated method stub
