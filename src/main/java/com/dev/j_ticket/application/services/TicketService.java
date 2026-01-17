@@ -27,7 +27,7 @@ public class TicketService {
      * Retrieves the complete catalog of tickets available in the system.
      * This method serves as the primary data provider for 
      * the administrative dashboard.
-     * @return a List of all active and past Ticket entities.
+     * @return a {@link List} of all active and past {@link Ticket} entities.
      */
 	public List<Ticket> getAllTickets() {
         return ticketRepository.findAll();
@@ -36,7 +36,7 @@ public class TicketService {
 	/**
      * Orchestrates the issuance of a new ticket.
      * @param ticket, the ticket domain object containing purchase details.
-     * @return the newly created and persisted Ticket.
+     * @return the newly created and persisted {@link Ticket}.
      */
     public Ticket createTicket(Ticket ticket) {
         return ticketRepository.save(ticket);

@@ -27,7 +27,7 @@ public class EventService {
      * Retrieves the complete catalog of events available in the system.
      * This method serves as the primary data provider for the public 
      * and the administrative dashboard.
-     * * @return a List of all active and past Event entities.
+     * * @return a {@link List} of all active and past {@link Event} entities.
      */
     public List<Event> getAllEvents() {
         return eventRepository.findAll();
