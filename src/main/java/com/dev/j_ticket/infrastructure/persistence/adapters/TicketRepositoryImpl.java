@@ -9,6 +9,13 @@ import com.dev.j_ticket.domain.models.Ticket;
 import com.dev.j_ticket.domain.repositories.TicketRepository;
 import com.dev.j_ticket.infrastructure.persistence.jpa.SpringDataTicketRepository;
 
+/**
+ * Persistence Adapter for Ticket entities.
+ * This class implements the EventRepository by wrapping the 
+ * SpringDataEventRepository. It acts as a bridge between the 
+ * domain layer and the Spring Data JPA infrastructure, ensuring that 
+ * the business logic is decoupled from the underlying ORM framework.
+ */
 @Repository
 public class TicketRepositoryImpl implements TicketRepository{
 	
@@ -18,16 +25,29 @@ public class TicketRepositoryImpl implements TicketRepository{
 		this.jpaRepo = jpaRepo;
 	}
 
+    /**
+     * Fetches all tickets by delegating the call to the JPA repository.
+     * @return a list of all tickets entities found in the database.
+     */
 	@Override
     public List<Ticket> findAll() {
         return jpaRepo.findAll();
     }
 
+	/**
+     * Delegates the lookup of a ticket by ID to the JPA repository.
+     * @param id, the internal database identifier.
+     */
     @Override
     public Optional<Ticket> findById(Long id) {
         return jpaRepo.findById(id);
     }
 
+	/**
+     * Executes the persistence of a ticket to the PostgreSQL database.
+     * @param the ticket to persist.
+     * @return the saved ticket including the generated database primary key.
+     */
     @Override
     public Ticket save(Ticket ticket) {
         return jpaRepo.save(ticket);
