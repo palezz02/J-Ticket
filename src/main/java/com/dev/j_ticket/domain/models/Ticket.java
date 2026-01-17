@@ -24,8 +24,6 @@ import lombok.Setter;
 /**
  * Represents a digital ticket for the J-Ticket system.
  * This entity links a User with an Event and handles financial data.
- * * @author palezz02
- * @version 1.0
  */
 @Entity
 @Table(name = "tickets")
