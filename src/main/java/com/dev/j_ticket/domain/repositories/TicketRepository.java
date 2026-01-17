@@ -25,7 +25,7 @@ public interface TicketRepository {
      * This method ensures that the ticketis officially
      * registered and linked to a user and an event.
      * @param ticket, the Ticket entity to be saved.
-     * @return the persisted {@link EvenTicket} with its assigned database ID.
+     * @return the persisted {@link Ticket} with its assigned database ID.
      */
 	Ticket save(Ticket ticket);
 	

@@ -19,6 +19,10 @@ public class TicketService {
 
 	private final TicketRepository ticketRepository;
 
+	/**
+     * Constructs the service with its required repository port.
+     * @param TicketRepository the domain repository interface for ticket data access.
+     */
     public TicketService(TicketRepository ticketRepository) {
 		this.ticketRepository = ticketRepository;
 	}

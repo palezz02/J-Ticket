@@ -25,6 +25,10 @@ public class TicketControllers {
 
 	private final TicketService ticketService;
 
+	/**
+     * Constructs the controller with the required TicketService.
+     * @param ticketService the service layer component responsible for ticket business logic.
+     */
     public TicketControllers(TicketService ticketService) {
 		this.ticketService = ticketService;
 	}

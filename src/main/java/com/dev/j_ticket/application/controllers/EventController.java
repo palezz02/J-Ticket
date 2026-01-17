@@ -21,6 +21,10 @@ public class EventController {
 
     private final EventService eventService;
 
+    /**
+     * Constructs the controller with the required EventService.
+     * @param eventService the service layer component responsible for event business logic.
+     */
     public EventController(EventService eventService) {
         this.eventService = eventService;
     }

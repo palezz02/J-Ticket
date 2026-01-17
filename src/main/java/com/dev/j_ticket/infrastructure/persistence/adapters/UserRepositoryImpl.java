@@ -47,7 +47,7 @@ public class UserRepositoryImpl implements UserRepository{
 
 	/**
      * Executes the persistence of a user to the PostgreSQL database.
-     * @param the user to persist.
+     * @param user the user to persist.
      * @return the saved {@link User} including the generated database primary key.
      */
 	@Override

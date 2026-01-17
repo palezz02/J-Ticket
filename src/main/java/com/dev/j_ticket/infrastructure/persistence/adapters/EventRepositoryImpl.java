@@ -35,7 +35,7 @@ public class EventRepositoryImpl implements EventRepository {
 
 	/**
      * Executes the persistence of an event to the PostgreSQL database.
-     * @param the event to persist.
+     * @param event, the event to persist.
      * @return the saved {@link Event} including the generated database primary key.
      */
 	@Override

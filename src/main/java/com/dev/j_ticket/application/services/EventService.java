@@ -19,6 +19,10 @@ public class EventService {
 
 	private final EventRepository eventRepository;
 
+	/**
+     * Constructs the service with its required repository port.
+     * @param eventRepository the domain repository interface for event data access.
+     */
     public EventService(EventRepository eventRepository) {
         this.eventRepository = eventRepository;
     }

@@ -46,7 +46,7 @@ public class TicketRepositoryImpl implements TicketRepository{
 
 	/**
      * Executes the persistence of a ticket to the PostgreSQL database.
-     * @param the ticket to persist.
+     * @param ticket the ticket to persist.
      * @return the saved {@link Ticket} including the generated database primary key.
      */
     @Override
