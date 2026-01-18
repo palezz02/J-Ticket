@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dev.j_ticket.application.dto.response.TicketResponseDTO;
 import com.dev.j_ticket.application.services.TicketService;
 import com.dev.j_ticket.domain.models.Event;
 import com.dev.j_ticket.domain.models.Ticket;
@@ -41,7 +42,7 @@ public class TicketControllers {
      * @return a {@link List} of {@link Ticket} objects with a 200 OK status.
      */
 	@GetMapping
-    public List<Ticket> findAll() {
+    public List<TicketResponseDTO> findAll() {
         return ticketService.getAllTickets();
     }
 

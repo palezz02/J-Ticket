@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.dev.j_ticket.application.dto.response.EventResponseDTO;
+import com.dev.j_ticket.application.mappers.EventMapper;
 import com.dev.j_ticket.domain.models.Event;
 import com.dev.j_ticket.domain.repositories.EventRepository;
 
@@ -18,22 +20,28 @@ import com.dev.j_ticket.domain.repositories.EventRepository;
 public class EventService {
 
 	private final EventRepository eventRepository;
+	private final EventMapper eventMapper;
 
 	/**
      * Constructs the service with its required repository port.
      * @param eventRepository the domain repository interface for event data access.
+     * @param eventMapper the domain repository interface for event data access.
      */
-    public EventService(EventRepository eventRepository) {
+    public EventService(EventRepository eventRepository, EventMapper eventMapper) {
         this.eventRepository = eventRepository;
+        this.eventMapper = eventMapper;
     }
 
     /**
      * Retrieves the complete catalog of events available in the system.
      * This method serves as the primary data provider for the public 
      * and the administrative dashboard.
-     * * @return a {@link List} of all active and past {@link Event} entities.
+     * @return a {@link List} of all active and past {@link Event} entities in ResponseDTO format.
      */
-    public List<Event> getAllEvents() {
-        return eventRepository.findAll();
+    public List<EventResponseDTO> getAllEvents() {
+        List<Event> events = eventRepository.findAll();
+        return events.stream()
+                .map(eventMapper::toResponse)
+                .toList();
     }
 }

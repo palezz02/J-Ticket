@@ -20,6 +20,9 @@ public interface EventMapper {
 	/**
      * Maps the creation/update request to the domain entity.
      */
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "tickets", ignore = true)
+    @Mapping(target = "version", ignore = true)
     Event toEntity(EventRequestDTO request);
 
     /**

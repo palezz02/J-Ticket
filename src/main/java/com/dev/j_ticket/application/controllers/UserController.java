@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dev.j_ticket.application.dto.response.UserResponseDTO;
 import com.dev.j_ticket.application.services.UserService;
 import com.dev.j_ticket.domain.models.Event;
 import com.dev.j_ticket.domain.models.User;
@@ -38,7 +39,7 @@ public class UserController {
      * @return a {@link List} of {@link User} objects with a 200 OK status.
      */
 	@GetMapping
-    public List<User> findAll() {
+    public List<UserResponseDTO> findAll() {
         return userService.getAllUsers();
     }
 }

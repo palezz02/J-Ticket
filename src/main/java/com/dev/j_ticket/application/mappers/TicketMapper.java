@@ -24,6 +24,8 @@ public interface TicketMapper {
      */
     @Mapping(target = "event.id", source = "eventId")
     @Mapping(target = "user.id", source = "userId")
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "serialNumber", ignore = true)
     Ticket toEntity(TicketRequestDTO request);
 
     /**

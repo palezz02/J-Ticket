@@ -5,6 +5,9 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.dev.j_ticket.application.dto.response.UserResponseDTO;
+import com.dev.j_ticket.application.mappers.TicketMapper;
+import com.dev.j_ticket.application.mappers.UserMapper;
 import com.dev.j_ticket.domain.models.Ticket;
 import com.dev.j_ticket.domain.models.User;
 import com.dev.j_ticket.domain.repositories.UserRepository;
@@ -20,23 +23,28 @@ import com.dev.j_ticket.domain.repositories.UserRepository;
 public class UserService {
 	
 	private final UserRepository userRepository;
+	private final UserMapper userMapper;
 
 	/**
      * Constructs the service with its required repository port.
      * @param userRepository the domain repository interface for user data access.
      */
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, UserMapper userMapper) {
 		this.userRepository = userRepository;
+		this.userMapper = userMapper;
 	}
 
     /**
      * Retrieves the complete catalog of users available in the system.
      * This method serves as the primary data provider for 
      * the administrative dashboard.
-     * @return a {@link List} of all {@link User} entities.
+     * @return a {@link List} of all {@link User} entities in ResponseDTO format.
      */
-	public List<User> getAllUsers() {
-        return userRepository.findAll();
+	public List<UserResponseDTO> getAllUsers() {
+        List<User> users = userRepository.findAll();
+        return users.stream()
+                .map(userMapper::toResponse)
+                .toList();
     }
 
 	/**

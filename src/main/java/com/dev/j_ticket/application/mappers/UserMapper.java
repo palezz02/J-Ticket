@@ -24,13 +24,15 @@ public interface UserMapper {
      * Note: The password field is mapped directly; encryption must be performed 
      * by the Service layer before persisting to the database.
      */
+	@Mapping(target = "id", ignore = true)
+    @Mapping(target = "tickets", ignore = true)
     User toEntity(UserRequestDTO request);
 
     /**
      * Maps the User entity to a secure Response DTO.
      * Automatically excludes the password as it's not present in the record.
      */
-    @Mapping(target = "ticketCount", source = "tickets", qualifiedByName = "mapActiveTicketsCount")
+    @Mapping(target = "activeTicketsCount", source = "tickets", qualifiedByName = "mapActiveTicketsCount")
     @Mapping(target = "selfUrl", ignore = true)
     UserResponseDTO toResponse(User user);
 
