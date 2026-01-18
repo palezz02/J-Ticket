@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dev.j_ticket.application.dto.response.EventResponseDTO;
 import com.dev.j_ticket.application.services.EventService;
 import com.dev.j_ticket.domain.models.Event;
 
@@ -37,7 +38,7 @@ public class EventController {
      * @return a {@link List} of {@link Event} objects with a 200 OK status.
      */
     @GetMapping
-    public List<Event> getAll() {
+    public List<EventResponseDTO> getAll() {
         return eventService.getAllEvents();
     }
 }

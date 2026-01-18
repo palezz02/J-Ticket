@@ -4,6 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.dev.j_ticket.application.dto.response.TicketResponseDTO;
+import com.dev.j_ticket.application.mappers.EventMapper;
+import com.dev.j_ticket.application.mappers.TicketMapper;
+import com.dev.j_ticket.domain.models.Event;
 import com.dev.j_ticket.domain.models.Ticket;
 import com.dev.j_ticket.domain.repositories.TicketRepository;
 
@@ -18,23 +22,28 @@ import com.dev.j_ticket.domain.repositories.TicketRepository;
 public class TicketService {
 
 	private final TicketRepository ticketRepository;
+	private final TicketMapper ticketMapper;
 
 	/**
      * Constructs the service with its required repository port.
      * @param ticketRepository the domain repository interface for ticket data access.
      */
-    public TicketService(TicketRepository ticketRepository) {
+    public TicketService(TicketRepository ticketRepository, TicketMapper ticketMapper) {
 		this.ticketRepository = ticketRepository;
+		this.ticketMapper = ticketMapper;
 	}
 
     /**
      * Retrieves the complete catalog of tickets available in the system.
      * This method serves as the primary data provider for 
      * the administrative dashboard.
-     * @return a {@link List} of all active and past {@link Ticket} entities.
+     * @return a {@link List} of all active and past {@link Ticket} entities in ResponseDTO format.
      */
-	public List<Ticket> getAllTickets() {
-        return ticketRepository.findAll();
+	public List<TicketResponseDTO> getAllTickets() {
+        List<Ticket> tickets = ticketRepository.findAll();
+        return tickets.stream()
+                .map(ticketMapper::toResponse)
+                .toList();
     }
 
 	/**
